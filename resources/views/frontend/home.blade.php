@@ -34,31 +34,29 @@
     <div class="swiper-container" id="home-slider">
       <div class="swiper-wrapper">
 
-        <div class="swiper-slide" data-cover="https://mimity-fashion53.netlify.com/img/slider/1.jpg" data-xs-height="220px" data-sm-height="350px" data-md-height="400px" data-lg-height="430px" data-xl-height="460px">
+        <div class="swiper-slide" data-cover="/slider/FarmSlider3.jpg" data-xs-height="220px" data-sm-height="350px" data-md-height="400px" data-lg-height="430px" data-xl-height="460px">
           <div class="swiper-overlay right">
             <div class="text-center">
-              <p class="display-4 animated" data-animate="fadeDown">Business Casual<br/>Outfit Ideas</p>
-              <a href="shop-grid.html" class="btn btn-primary rounded-pill animated" data-animate="fadeUp" data-addclass-on-xs="btn-sm">SHOP NOW</a>
+              <h1 class="bg-white text-dark d-inline-block p-1 animated" data-animate="fadeDown">KANDANG</h1>
+              <p class="display-4 animated bg-white text-dark shadow" data-animate="fadeDown">BERTEKNOLOGI TINGGI</p>
             </div>
           </div>
         </div>
 
-        <div class="swiper-slide" data-cover="https://mimity-fashion53.netlify.com/img/slider/2.jpg" data-xs-height="220px" data-sm-height="350px" data-md-height="400px" data-lg-height="430px" data-xl-height="460px">
+        <div class="swiper-slide" data-cover="/slider/FarmSlider2.jpg" data-xs-height="220px" data-sm-height="350px" data-md-height="400px" data-lg-height="430px" data-xl-height="460px">
           <div class="swiper-overlay left">
             <div class="text-center">
-              <h1 class="bg-white text-dark d-inline-block p-1 animated" data-animate="fadeDown">TOP BRANDS</h1>
-              <p class="display-4 animated" data-animate="fadeDown">30% - 70% OFF</p>
-              <a href="shop-grid.html" class="btn btn-warning rounded-pill animated" data-animate="fadeUp" data-addclass-on-xs="btn-sm">SHOP NOW</a>
+              <h1 class="bg-white text-dark d-inline-block p-1 animated" data-animate="fadeDown">PRODUK</h1>
+              <p class="display-4 animated text-dark bg-white" data-animate="fadeDown">KELAS EKSPORT</p>
             </div>
           </div>
         </div>
 
-        <div class="swiper-slide" data-cover="https://mimity-fashion53.netlify.com/img/slider/3.jpg" data-xs-height="220px" data-sm-height="350px" data-md-height="400px" data-lg-height="430px" data-xl-height="460px">
+        <div class="swiper-slide" data-cover="/slider/FarmSlider1.jpg" data-xs-height="220px" data-sm-height="350px" data-md-height="400px" data-lg-height="430px" data-xl-height="460px">
           <div class="swiper-overlay right">
             <div class="text-center">
-              <h1 class="bg-white text-dark d-inline-block p-1 animated" data-animate="fadeDown">Brand New</h1>
-              <p class="display-4 animated" data-animate="fadeDown">High Quality Clothes</p>
-              <a href="shop-grid.html" class="btn btn-primary rounded-pill animated" data-animate="fadeUp" data-addclass-on-xs="btn-sm">SHOP NOW</a>
+              <h1 class="bg-white text-dark d-inline-block p-1 animated" data-animate="fadeDown">KESEHATAN</h1>
+              <p class="display-4 animated text-dark bg-white" data-animate="fadeDown">AYAM SELALU TERJAGA</p>
             </div>
           </div>
         </div>
@@ -79,19 +77,40 @@
         @foreach($products as $product)
         <div class="col-md-3 card card-product">
           <div class="card-body">
-            <button class="wishlist atw-demo active" title="Added to wishlist"><i data-feather="heart"></i></button>
-            <a href="shop-single.html"><img class="card-img-top" src="https://mimity-fashion53.netlify.com/img/products/1_small.jpg" alt="Card image cap"></a>
-            <a href="shop-single.html" class="card-title">{{$product->product_name}}</a>
-            <span class="badge badge-success">{{$product->stock}}</span>
+            <span><img class="card-img-top" src="{{$product->featured_image}}" alt="Card image cap"><span>
+            <span class="card-title">{{$product->product_name}}</span>
+            <span class="badge badge-success">{{($product->stock>=100)? "Tersedia" : "Sisa ".$product->stock." unit"}}</span>
           <div class="price"><span class="h5">Rp. {{number_format($product->price, 0, ",", ".")}}</span></div>
           </div>
           <div class="card-footer">
-            <button class="btn btn-sm rounded-pill btn-outline-primary btn-block atc-demo">Add to Cart</button>
+            <form action="{{ route('cart.store') }}" method="post">
+              {{ csrf_field() }}
+              
+              <input type="hidden" name="id" value="{{$product->id}}">
+              <input type="hidden" name="product_name" value="{{$product->product_name}}">
+              <input type="hidden" name="featured_image" value="{{$product->featured_image}}">
+              <input type="hidden" name="price" value="{{$product->price}}">
+              <label class="" for="quantity">Kuantitas</label>
+              <div class="form-group">
+                <input type="number" list="qty" class="form-control rounded-pill btn-outline-success text-center" name="quantity" min="1" required>
+                <datalist id="qty">
+                    <option value="1">
+                    <option value="2">
+                    <option value="3">
+                    <option value="4">
+                    <option value="5">
+                  </datalist>
+              </div>
+              <button type="submit" class="btn btn-sm rounded-pill btn-outline-primary btn-block{{-- atc-demo --}}">Add to Cart</button>
+            </form>
           </div>
         </div>
         @endforeach
       </div>
       <!-- /Featured Products -->
+      <div class="text-center">
+          <a href="{{route('cart')}}" class="btn btn-primary rounded-pill btn-lg">Keranjang <i data-feather="arrow-right"></i></a>
+      </div>
 
     </div>
     <!-- /Main Content -->

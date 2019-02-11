@@ -25,6 +25,7 @@
 
 <body>
     @include('frontend.navbar')
+    @include('frontend.message')
     @yield('content')
     @include('frontend.footer')
     @yield('scripts')

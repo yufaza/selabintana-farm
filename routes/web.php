@@ -18,6 +18,14 @@ Route::get('/shipping', 'FrontEndController@shipping')->name('shipping');
 Route::get('/payment', 'FrontEndController@payment')->name('payment');
 Route::get('/confirm-payment', 'FrontEndController@confirm_payment')->name('cpayment');
 
+Route::post('/add-to-cart', [
+    'uses' => 'FrontEndController@addToCart',
+    'as' => 'cart.store'
+]);
+Route::get('/remove-from-cart/{id}', [
+    'uses' => 'FrontEndController@addToCart',
+    'as' => 'cart.remove'
+]);
 // Route::get('/', function () {
 //     return view('welcome');
 // });

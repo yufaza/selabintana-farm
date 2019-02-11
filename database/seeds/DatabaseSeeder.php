@@ -36,9 +36,14 @@ class DatabaseSeeder extends Seeder
             'role' => 'admin'
          ]);
          App\Product::create([
-            'product_name' =>  "Telur Ayam Kampung 200 Kg",
+            'product_name' =>  "Telur Ayam 200 Kg",
             'stock' => 100,
             'price' => 2000000.00
+         ]);
+         App\Product::create([
+            'product_name' =>  "Telur Ayam 1000 Kg",
+            'stock' => 100,
+            'price' => 9000000.00
          ]);
     }
 }
