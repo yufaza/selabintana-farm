@@ -70,7 +70,7 @@
 
     <div class="container mt-3">
 
-      <h4 class="bold text-center mt-gutter">Featured Products</h4>
+      <h4 class="bold text-center mt-gutter">Produk Unggulan</h4>
 
       <!-- Featured Products -->
       <div class="card-deck card-deck-product mt-3 mb-2 mb-sm-0 row">

@@ -16,11 +16,13 @@ class CreatePurchaseOrdersTable extends Migration
         Schema::create('purchase_orders', function (Blueprint $table) {
             $table->increments('id');
             $table->string('order_code', 50);
-            $table->timestamp('order_date');
             $table->double('payment');
             $table->string('customer_name', 50);
             $table->string('customer_phone', 50);
             $table->string('customer_email', 50);
+            $table->string('customer_address', 191);
+            $table->string('status', 50)->default('Menunggu Pembayaran');
+            $table->timestamps();
         });
     }
 

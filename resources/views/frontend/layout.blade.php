@@ -20,7 +20,7 @@
     <!-- Mimity CSS  -->
     <link rel="stylesheet" href="/frontend/style.min.css">
 
-    <title>Home - Mimity</title>
+    <title>CV. Selabintana Farm</title>
 </head>
 
 <body>

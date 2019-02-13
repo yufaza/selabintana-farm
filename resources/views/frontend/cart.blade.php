@@ -9,16 +9,10 @@
               <a class="nav-link active" href="#">KERANJANG</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link disabled" href="javascript:void(0)"><i data-feather="arrow-right"></i></a>
+              <a class="nav-link disabled" href="#"><i data-feather="arrow-right"></i></a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">PENGIRIMAN</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link disabled" href="javascript:void(0)"><i data-feather="arrow-right"></i></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">PEMBAYARAN</a>
             </li>
           </ul>
         </div>
@@ -38,32 +32,25 @@
                     <span class="h6 bold d-inline-block" title="{{$product['product_name']}}">{{$product['product_name']}}</span>
                   </td>
                   <td class="cart-qty nostretch text-center">
-                    <div class="spinner" data-addclass-on-smdown="spinner-sm">
                     <p>Jumlah: {{$product['quantity']}}</p>
                   </td>
                   <td class="cart-price text-right">
                   <span class="roboto-condensed bold">Rp. {{number_format($product['price'], 0, ",", ".")}}</span>
                   </td>
-                  <td class="cart-action nostretch pr-0">
-                    <div class="dropdown">
-                      <a href="#" class="nav-icon text-secondary dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i data-feather="more-vertical"></i>
-                      </a>
-                      <div class="dropdown-menu dropdown-menu-right">
-                        <a href="{{route('cart.remove', ['id' => $product['id']])}}" class="dropdown-item text-danger" type="button"><i data-feather="x"></i> Hapus item</a>
-                      </div>
-                    </div>
-                  </td>
                 </tr>
                 @php
                     $total += $product['quantity'] * $product['price'];
+                    session()->put('total', $total);
                 @endphp
               @endforeach
             </tbody>
           </table>
+          
           <div class="text-center">
             <small class="counter">SUBTOTAL</small>
             <h3 class="roboto-condensed bold">Rp. {{number_format($total, 0, ",", ".")}}</h3>
+            <a href="/" class="btn btn-primary rounded-pill btn-lg"><i data-feather="arrow-left"></i> Kembali</a>
+            <a href="/flush-cart" class="btn btn-danger rounded-pill btn-lg">Kosongkan Keranjang</a>
             <a href="{{route('shipping')}}" class="btn btn-primary rounded-pill btn-lg">Pengiriman <i data-feather="arrow-right"></i></a>
           </div>
         </div>

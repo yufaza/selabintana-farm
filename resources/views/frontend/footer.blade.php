@@ -1,6 +1,6 @@
     <!-- Footer -->
 
-    <div class="copyright">Copyright © 2018 Mimity All right reserved</div>
+    <div class="copyright footer"><a href="{{route('login')}}">Login Pegawai <i data-feather="log-in" class="mr-5"></i></a>Projek oleh: Agung Maulana, Irfan Fauzi, M Yusuf Fajar Zaelani, Gelar Lailatul Qodar.</div>
       <!-- /Footer -->
   
       <!-- REQUIRED JS  -->

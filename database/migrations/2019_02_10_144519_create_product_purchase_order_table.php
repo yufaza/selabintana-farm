@@ -18,7 +18,6 @@ class CreateProductPurchaseOrderTable extends Migration
             $table->integer('product_id');
             $table->integer('purchase_order_id');
             $table->integer('quantity');
-            $table->timestamps();
         });
     }
 

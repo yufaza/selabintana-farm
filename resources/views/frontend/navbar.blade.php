@@ -7,8 +7,8 @@
 
       <ul class="nav ml-auto ml-sm-0">
         <!-- Search form toggler -->
-        <li class="nav-item"><a class="nav-link" href="#">Cek Status Pemesanan</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Konfirmasi Pembayaran</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{route('cStatus')}}">Cek Status Pemesanan</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{route('cpayment')}}">Konfirmasi Pembayaran</a></li>
 
         <!-- Cart dropdown -->
         <li class="nav-item dropdown dropdown-hover dropdown-cart">
@@ -27,7 +27,6 @@
                 <div class="media-body">
                   <span title="{{$pl['product_name']}}">{{$pl['product_name']}}</span>
                   <span class="qty">{{$pl['quantity']}}</span> x <span class="price">Rp. {{number_format($pl['price'], 0, ",", ".")}}</span>
-                  <button type="button" class="close" aria-label="Close"><i data-feather="x-circle"></i></button>
                 </div>
               </div>
               @php
@@ -43,11 +42,15 @@
                 <a href="{{route('cart')}}" class="btn btn-block rounded-pill btn-secondary">Lihat Keranjang</a>
                 </div>
                 <div class="w-100 ml-1">
-                  <a href="{{route('shipping')}}" class="btn btn-block rounded-pill btn-primary">Bayar</a>
+                  <a href="{{route('fcart')}}" class="btn btn-block rounded-pill btn-danger">Hapus Semua</a>
                 </div>
               </div>
             @else
-              <p>Tidak ada apapun dalam keranjang</p>
+              <div class="d-flex justify-content-between pb-2">
+                <div class="w-200 mr-1">
+                  Tidak ada item dalam kerajang
+                </div>
+              </div>
             @endif
           </div>
         </li>
