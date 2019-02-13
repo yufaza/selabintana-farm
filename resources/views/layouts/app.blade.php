@@ -93,6 +93,9 @@
                                     <li class="list-group-item">
                                         <a href="{{route('products')}}">Produk</a>
                                     </li>
+                                    <li class="list-group-item">
+                                        <a href="{{route('product.create')}}">Tambahkan Produk Baru</a>
+                                    </li>
                                 
                                 @if(Auth::user()->role == 'pemasaran' || Auth::user()->role == 'admin')
                                 <li class="list-group-item">
